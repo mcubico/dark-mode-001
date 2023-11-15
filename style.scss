@@ -1,16 +1,21 @@
-$primary-color: #1e1e1e;
-$secondary-color: #d0d0d0;
+$black: #000000;
+$eerie-gray: #1e1e1e;
+$american-silver: #d0d0d0;
+$mikado-yellow: #ffc409;
+$gunmetal-gray: #2b3141;
+$magnolia-pink: #faeeff;
+$independence-gray: #484f63;
 
 body {
 	height: 100vh;
-	color: $primary-color;
+	color: $eerie-gray;
 	background: 
 		linear-gradient(
 			to bottom right,
-			#faeeff 25%,
-			#484f63 50%,
-			#2b3141 75%,
-			#000000
+			$magnolia-pink 25%,
+			$independence-gray 50%,
+			$gunmetal-gray 75%,
+			$black
 		);
 	background-size: 300% 300%;
 	background-position: 
@@ -18,11 +23,11 @@ body {
 	transition: 
 		background-position 0.5s;
 		
-	&:has(#dark-mode-toogle:checked){
+	&:has(#dark-mode-toggle:checked){
 	background-position: 
 		100% 100%;
-	color: $secondary-color;
-}
+	color: $american-silver;
+	}
 }
 
 .d-flex-center {
@@ -35,4 +40,62 @@ body {
 	position: absolute;
 	left: -9999px;
 	opacity: 0;
+}
+
+.d-none {
+	display: none;
+}
+
+.toggle {
+	font-size: 2rem;
+	border: 0.125em solid currentColor;
+	border-radius: 2em;
+	cursor: pointer;
+	display: block;
+	position: relative;
+	width: 3.75em;
+	height: 2em;
+	
+	&::before,
+	&::after {
+		content: "";
+		display: block;
+		border-radius: 1em;
+		position: absolute;
+		z-index: 1;
+	}
+	
+	&::before {
+		background-color:$mikado-yellow;
+		outline: 0.2em dotted $mikado-yellow;
+		outline-offset: 0.125em;
+		inset: 0.7em;
+		width: 0.625em;
+		height: 0.625em;
+	}
+	
+	&::after {
+		box-shadow: 0.25em 0.25em $gunmetal-gray;
+		right: 0.9em;
+		top: 0.125em;
+		width: 1.125em;
+		height: 1.125em;
+	}
+	
+	span {
+		background-color: currentColor;
+		border-radius: 2em;
+		display: block;
+		overflow: hidden;
+		position: absolute;
+		inset: 0.25em;
+		transition: left 0.25s;
+		width: 1.5em;
+		height: 1.5em;
+		z-index: 2;
+	}
+}
+
+input:checked ~ .toggle span {
+	left: 2em;
 }
