@@ -1,0 +1,38 @@
+$primary-color: #1e1e1e;
+$secondary-color: #d0d0d0;
+
+body {
+	height: 100vh;
+	color: $primary-color;
+	background: 
+		linear-gradient(
+			to bottom right,
+			#faeeff 25%,
+			#484f63 50%,
+			#2b3141 75%,
+			#000000
+		);
+	background-size: 300% 300%;
+	background-position: 
+		top left;
+	transition: 
+		background-position 0.5s;
+		
+	&:has(#dark-mode-toogle:checked){
+	background-position: 
+		100% 100%;
+	color: $secondary-color;
+}
+}
+
+.d-flex-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.input-controls {
+	position: absolute;
+	left: -9999px;
+	opacity: 0;
+}
